@@ -6,16 +6,11 @@ public class Boxes : MonoBehaviour
 {
     private int hP;
 
+    // ENCAPSULATION
     public int HP
     {
         get { return hP; }
         set { hP = Mathf.Max(1, value); }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -25,6 +20,13 @@ public class Boxes : MonoBehaviour
         DestroyNoHp();
     }
 
+    // ABSTRACTION
+    void DestroyNoHp() 
+    {
+        if (hP < 1)
+        
+            Destroy(gameObject);
+        }
 
     void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Player"))
@@ -32,12 +34,5 @@ public class Boxes : MonoBehaviour
             hP--;
         }
     }
-
-    void DestroyNoHp() 
-    {
-        if (hP < 1)
-        
-            Destroy(gameObject);
-        }
 
 }
